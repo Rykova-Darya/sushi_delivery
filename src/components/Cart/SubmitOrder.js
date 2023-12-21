@@ -43,6 +43,11 @@ const SubmitOrder = (props) => {
       return;
     }
 
+    props.onSubmit({
+        name: valueName,
+        city: valueCity,
+        address: valueAddress
+    })
     console.log(valueName);
     console.log(valueCity);
     console.log(valueAddress);
