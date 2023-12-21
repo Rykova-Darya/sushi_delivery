@@ -1,0 +1,92 @@
+.form {
+    margin: 1rem 0;
+    height: 15rem;
+    overflow: auto;
+  }
+  
+  .control {
+    margin-bottom: 0.5rem;
+  }
+  
+  .control label {
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+  
+  .control input {
+    font: inherit;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 20rem;
+    max-width: 100%;
+  }
+
+  .control input:focus {
+    outline: none;
+    border-color: #060a8a8a;
+    background: #060a8a1f;
+  }
+
+  .invalid input {
+    border: 1px solid #8a0606;
+    background-color: #8a06061f;
+  }
+  
+  .invalid input:focus {
+    border-color: #8a3706;
+    background-color: #8a37066e;
+  }
+
+  .input-error {
+    margin-top: 0.313rem;
+    font-size: 0.75rem;
+    color: #8a0606;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+  }
+  
+  .actions button {
+    font: inherit;
+    color: #6b068a;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #6b068a;
+    border-radius: 25px;
+    padding: 0.5rem 2rem;
+  }
+  
+  .actions button:hover,
+  .actions button:active {
+    background-color: #ccc;
+  }
+  
+  .actions .submit {
+    border: 1px solid #6b068a;
+    background-color: #6b068a;
+    color: white;
+  }
+  
+  .actions .submit:hover,
+  .actions .submit:active {
+    background-color: #47035d;
+    border-color: #47035d;
+    color: white;
+  }
+
+  .actions .submit:disabled,
+  .actions .submit:disabled:hover,
+  .actions .submit:disabled:active {
+    /* background-color: #ccc;
+    color: #2c2c2c;
+    border-color: #ccc; */
+    filter: opacity(0.5);
+    cursor: not-allowed;
+  }
+  
+  .invalid label {
+    color: #8a0606;
+  }

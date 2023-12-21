@@ -1,10 +1,12 @@
 import Modal from '../UI/Modal';
 import styles from './Cart.module.css';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import CartContext from '../../store/cart-context';
 import CartItem from './CartItem';
+import SubmitOrder from './SubmitOrder';
 
 const Cart = (props)=> {
+  const [submitOrderAvailable, setSubmitOrserAvailable] = useState(false);
   const cartContext = useContext(CartContext);
   const totalAmount = `₽ ${Math.abs(cartContext.totalAmount).toFixed(2)}`;
   const hasItems = cartContext.items.length > 0;
@@ -15,6 +17,10 @@ const Cart = (props)=> {
 
   const addCartItemHandler = (item) => {
     cartContext.addItem({...item, amount: 1})
+  }
+
+  const orderHandler = () => {
+    setSubmitOrserAvailable(true);
   }
     const cartItems = (
       <ul className={styles["cart-items"]}>
@@ -30,6 +36,13 @@ const Cart = (props)=> {
         ))}{" "}
       </ul>
     );
+  
+  const modalButtons = (
+    <div className={styles.actions}>
+    <button className={styles['button--alt']} onClick={props.onHideCart}>Закрыть</button>
+    {hasItems && <button className={styles.button} onClick={orderHandler}>Заказать</button>}
+</div>
+  )
     
     return (
         <Modal onHideCart={props.onHideCart}>
@@ -38,10 +51,8 @@ const Cart = (props)=> {
                 <span>Итого</span>
                 <span>{totalAmount}</span>
             </div>
-            <div className={styles.actions}>
-                <button className={styles['button--alt']} onClick={props.onHideCart}>Закрыть</button>
-                {hasItems && <button className={styles.button}>Заказать</button>}
-            </div>
+            {submitOrderAvailable && <SubmitOrder onCancel={props.onHideCart}/>}
+            {!submitOrderAvailable && modalButtons}
         </Modal>
     )
 }
